@@ -29,13 +29,13 @@ h1, h2, h3, h4, h5, h6
   font-family:'Gloria Hallelujah', cursive;
 }
 
-#mainheader
+/* #mainheader
 {
   background-color:#B6E5FF;
   border-bottom-style:solid;
   border-width:0.15em;
   border-color:#363636;
-}
+} */
 
 #navbar
 {
