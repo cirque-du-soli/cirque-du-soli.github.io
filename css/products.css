@@ -1,37 +1,4 @@
-/*DELETE THIS */
 
-h1, h2, h3, h4, h5, h6 {
-font-family: 'Gloria Hallelujah', cursive;
-}
-
-p, span {
-    font-family: 'Open Sans', sans-serif;
-}
-
-
-.nav-link:hover
-{
-  color:#454545;
-  font-weight:800;
-  filter:drop-shadow(1px 1px 1px #dfc59f);
-}
-
-.nav-link
-{
-  color:#363636;
-  font-weight:500;
-
-}
-
-#navbar
-{
-  background-color:#FFe8C5;
-  border-bottom-style:solid;
-  border-color:#363636;
-  border-bottom-width:0.15em;
-}
-
-/* END DELETE */
 
 
 
@@ -150,15 +117,11 @@ border-style:none
 
 /*********** END CAROUSEL 1 *************/
 
-.carousel{
-    carousel-control-color: #111111;
-}
-
 .card {
     border: #99DBFF 2px solid;
     border-radius: 20px;
     overflow: auto;
-    background-color: B6E5FF;
+    background-color: #B6E5FF;
     height: 100%;
     padding: 1em;
 }
@@ -215,12 +178,6 @@ border-style:none
 .card-holder{
     min-height: fit-content;
 
-}
-
-.carousel-control-prev .carousel-control-next .carousel-control-prev-icon .w-aut {
-    background-color: #333333;
-    color: #333333;
-    text-shadow: #333333;
 }
 
 .services-button{
