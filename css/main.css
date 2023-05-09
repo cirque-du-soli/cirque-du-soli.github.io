@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Open+Sans:wght@300&display=swap');
 
-header {
+#mainheader {
     text-align: left;
     background-color: #B6E5FF;
 }
