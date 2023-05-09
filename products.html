@@ -40,9 +40,7 @@
 
 
 
-
-    <!--HEADER-->
-    <div id=mainheader class="row py-1 mx-0">
+    <div id=mainheader class="row py-1">
         <div class="col-2 offset-1 px-1 d-flex align-items-center">
             <img class="img-fluid" src="images/logosm.png" alt="Fair Pets Vet">
         </div>
@@ -55,18 +53,19 @@
         </div>
     </div>
 
-    <!--NAVBAR-->
-    <div id=navbar class="row mx-0">
-        <header class="d-flex justify-content-center py-1">
+    <div class="row">
+        <header id=navbar class="d-flex justify-content-center py-1">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page"><i
+                <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page"><i
                             class="bi-house-heart-fill"></i></a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Staff</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="staff.html" class="nav-link">Staff</a></li>
             </ul>
         </header>
     </div>
+
+    <br>
 
 
     <div class="container-fluid" id="products-body">
@@ -149,7 +148,8 @@
                     <img class="paw-icon" src="images/pawIconPP.png" alt="Paw Icon">
                 </div>
             </div>
-            <div class="col mx-0 px-0 text-md-start text-center d-flex align-items-center justify-content-md-start justify-content-evenly">
+            <div
+                class="col mx-0 px-0 text-md-start text-center d-flex align-items-center justify-content-md-start justify-content-evenly">
                 <span>
                     <h2 class="services-text">
                         Products from our Partners!
@@ -356,19 +356,46 @@
                     <img class="paw-icon" src="images/pawIconPP.png" alt="Paw Icon">
                 </div>
             </div>
-            <div class="col-12 col-md-3 justify-content-center align-self-center align-content-end text-center align-text-bottom">
+            <div
+                class="col-12 col-md-3 justify-content-center align-self-center align-content-end text-center align-text-bottom">
                 <a href="services.html" class="services-button-text align-baseline">
-                <div class="services-button">
-                    <h2 class="services-button-text">
-                        Our Services
-                    </h2>
-                </div>
+                    <div class="services-button">
+                        <h2 class="services-button-text">
+                            Our Services
+                        </h2>
+                    </div>
                 </a>
             </div>
         </div> <!--------------------------- END OF ROW: SERVICES --------------------------->
 
     </div> <!--------------------------- END DIV: Products Main Body --------------------------->
-    </div>
+    <footer>
+        <section class="row mt-3">
+            <div class="col-12 col-md-4 d-flex flex-column align-items-center">
+                <h2 class="text-center fs-2 pt-3 pb-2">Contact Info</h2>
+                <h3 class="small text-center"><i class="bi bi-geo-alt-fill"></i> 3818 Blackwell Street, <br>Fairbanks,
+                    <br>Alaska
+                </h3>
+                <h3 class="small"><i class="bi bi-telephone-inbound-fill"></i> + 1 (514) 553 1279</h3>
+                <h3 class="small"><i class="bi bi-envelope-heart-fill"></i> contact@fairpetsvet.com</h3>
+            </div>
+            <div class="col-md-4 d-none d-md-block">
+                <img class="img-fluid" src="images/Pets.png" alt="Pets">
+            </div>
+
+            <div class="col-12 col-md-4 d-flex flex-column align-items-center">
+                <div class="text-center">
+                    <h2 class="text-center fs-2 pt-3 pb-2">Map</h2>
+                    <a href="https://www.google.com/maps/search/3818+Blackwell+Street,+Fairbanks,+Alaska/@64.8282732,-147.8338054,11z/data=!3m1!4b1"
+                        title="Map"><img src="images/Map.jpg" alt="Map"
+                            class="w-50 img-fluid justify-content-center "></a>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <h3 class="fs-5 text-wrap">Designed by: Soliloquy, Xiaoxing, Nicholas and Pejman</h3>
+            </div>
+        </section>
+    </footer>
 
     <!-- Carousel JS -->
     <script src='./js/products.js'></script>
