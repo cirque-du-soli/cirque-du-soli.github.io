@@ -150,31 +150,24 @@ p, span {
 
 }
 
-#text_1 {
+.text_1 {
     color: #363636;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     font-weight: bold;
 }
 
-#text_2 {
+.text_2 {
     color: #363636;
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     font-weight: bold;
 }
 
-#text_3 {
-    color: #a0959f;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-#bar1 {
+.bar1 {
     background-color: #B6E5FF;
 }
 
-#bar2 {
+.bar2 {
     background-color: #99DBFF;
 }
