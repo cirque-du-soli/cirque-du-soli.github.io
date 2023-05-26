@@ -1,6 +1,4 @@
-/////////////////////////////////////////////
-////////////////// SETUP:
-
+// SETUP: /////////////////////////////////////////////
 
 let numShown;
 let isMatch;
@@ -15,42 +13,39 @@ let curTotalPairs;
 let curTotalCards;
 let timerRunning = false;
 
-/////////////////////////////////////////////
-////////////////// LISTENERS:
+// LISTENERS: /////////////////////////////////////////////
 
 // when page loads:
 $(document).ready(initialSetup);
 
-// Every time user clicks on a tile:
-$(".cardToFlip").on("click", { "thisCard": this }, userChoice); //END: on card click
+// FUNCTIONS: ////////////////////////////////////////////
 
-//New Game Button is clicked:
-$("#newGameBtn").click(newGameSetup);
-
-
-/////////////////////////////////////////////
-////////////////// FUNCTIONS:
-
-// INITIAL SETUP
+/**
+ * Sets up page layout upon initial load.
+ * @returns allImageUrls Array of strings with img URLs.
+ */
 function initialSetup() { //to be executed on page load
-
-    //creates button elements
+    // creates button elements
     createDashboard();
+
+    // create tiles
+    createMCItem();
+
+    // Every time user clicks on a tile:
+    $(".cardToFlip").on("click", { "thisCard": this }, userChoice); //END: on card click
+
+    //New Game Button is clicked:
+    $("#newGameBtn").click(newGameSetup);
 
     // how many pairs in the game
     curTotalPairs = 6; //BONUS: this could be decided by user
     curTotalCards = 2 * curTotalPairs;
 
-    // get array of img urls (will be files from folder)
-
-
+    // fill array with img urls
     for (let i = 1; i <= maxImages; i++) {
-        urlString = "https://picsum.photos/seed/" + i + "/240/320";
+        urlString = "https://picsum.photos/seed/" + i + "/240/320"; //specified size
         allImageUrls.push(urlString);
     }
-
-    console.log("allImageUrls");
-    console.log(allImageUrls);
 
     //set up new game
     newGameSetup();
@@ -59,7 +54,11 @@ function initialSetup() { //to be executed on page load
 
 }; //END: fn initialSetup
 
-//SHUFFLE 
+/**
+ * Takes an array of URLs and reorders them randomly.
+ * @param {Array} cardUrls Array of strings.
+ * @returns cardUrls Array of strings.
+ */
 function shuffleCards(cardUrls) {
     let randIndex;
     let curIndex = cardUrls.length
@@ -79,25 +78,29 @@ function shuffleCards(cardUrls) {
     }
 
     return cardUrls;
+
 }; //END: fn shuffleCards
 
-//COMPARE CARDS 
+/**
+ * Compares two card elements' src attributes.
+ * @param {Array} cards A two-item array of card HTML elements.
+ * @returns boolean Indicating whether the URLs match or not.
+ */
 function compareCards(cards) {
 
-    console.log("card1");
-    console.log(cards[0]);
-
-    console.log("card2");
-    console.log(cards[1]);
-
+    // compare the src attributes of each card element
     if ($(cards[0]).attr("src") == $(cards[1]).attr("src")) {
-        return true;
+        return true; // match
     } else {
-        return false;
+        return false; // no match
     }
+
 }; //END: fn compareCards
 
-//GAME OVER
+/**
+ * Game Over: Show "Play Again" button, and display results.
+ * @param {number} guesses The integer number of guesses.
+ */
 function gameOver(guesses) {
 
     // display Game Over text
@@ -112,7 +115,10 @@ function gameOver(guesses) {
 }; //END: fn gameOver
 
 
-// update best score
+/**
+ * Check current score against bestScore, and update bestScore if necessary.
+ * @param {number} guesses The integer number of guesses.
+ */
 function checkBestScore(guesses) {
 
     //check if current score is lower (or if it's the first)
@@ -128,20 +134,23 @@ function checkBestScore(guesses) {
 
 }; //END: fn checkBestScore
 
-// NEW GAME:
+/**
+ * Clears a completed game (if applicable) and sets up a new game
+ * Called by initialSetup() and the "Play Again" button.
+ */
 function newGameSetup() {
+
     // clear results and scores
     guesses = 0;
 
     $("#numGuesses").html("--");
     $("#result").html("");
 
-    // flip all cards on back
+    // flip all cards face-down
     $(".showCard").removeClass("showCard");
     $(".lockCard").removeClass("lockCard");
 
-
-    //show newgame button
+    // hide newgame button
     $("#newGameBtn").css('visibility', 'hidden');
 
     // generate random indexes
@@ -153,17 +162,15 @@ function newGameSetup() {
 
         // choose a unique random index
         do {
+
             randomIndex = Math.floor(Math.random() * allImageUrls.length);
-            console.log(randomIndex); //TODO remove
-            console.log("randomIndex"); //TODO remove
+
         } while (randomIndexes.indexOf(randomIndex) >= 0); // while random index is already in array
 
         // add unique i to array
         randomIndexes.push(randomIndex);
 
-        console.log("randomIndexes"); //TODO remove
-        console.log(randomIndexes); //TODO remove
-    }
+    } //END: create rand index array
 
     // create array of card face images -- two of each image
     let curFaceImages = [];
@@ -174,25 +181,18 @@ function newGameSetup() {
         //url at the random index
         rImage = allImageUrls[randomIndexes[j]];
 
-        console.log("rImage"); //TODO remove
-        console.log(rImage); //TODO remove
-
-
-        // add to array twice
+        // add to array twice -- two of each card in deck
         curFaceImages.push(rImage);
         curFaceImages.push(rImage);
-
-        console.log(curFaceImages); //TODO remove
-        console.log("curFaceImages"); //TODO remove
 
     }
 
     // randomly shuffle the array of current images 
     let shuffledFaceImages = shuffleCards(curFaceImages);
-    console.log(shuffledFaceImages);
 
     // place images into their tiles
     for (let i in shuffledFaceImages) {
+
         $("#face" + i).attr("src", shuffledFaceImages[i]);
 
     }
@@ -202,30 +202,34 @@ function newGameSetup() {
 
 }; //END: fn newGameSetup
 
-
-// USER MAKES CHOICE
+/**
+ * Responds to user's click.
+ * Determines where the click occurred, the status of the element (card shown or hid).
+ * Validates the click against required states to prevent hacks or unintended actions.
+ * 
+ * @param {Event} clickedCard All data from the click event.
+ * @returns 
+ */
 function userChoice(clickedCard) {
-    // refer to the div with the .cardToFlip class
-    console.log("clicked a tile");
+    // Intent: refer to the div with the .cardToFlip class
 
-    console.log("clickedCard");
-    console.log(clickedCard);
+    // Validate click -- if invalid, do nothing 
+    if (timerRunning) { //cards currently waiting to flip face-down
+        //console.log("timer: ABORT"); 
+        return;
 
-    console.log("*******NARROW DOWN***********");
-    console.log(clickedCard.currentTarget);
+    } else if ($(".showCard").length >= 2) { //two or more non-locked cards are already revealed
+        //console.log("too many cards: ABORT");
+        return;
 
-    if (timerRunning) {
-        console.log("timer: ABORT");
+    } else if ($(clickedCard.currentTarget).hasClass("showCard")) { // this 2nd click occurred on same new card
+        //console.log("clicked shown card: ABORT");
         return;
-    } else if ($(".showCard").length >= 2) {
-        console.log("too many cards: ABORT");
+
+    } else if ($(clickedCard.currentTarget).hasClass("lockCard")) { // click occurred on a locked/revealed card
+        //console.log("clicked locked card: ABORT");
         return;
-    } else if ($(clickedCard.currentTarget).hasClass("showCard")) {
-        console.log("clicked shown card: ABORT");
-        return;
-    } else if ($(clickedCard.currentTarget).hasClass("lockCard")) {
-        console.log("clicked locked card: ABORT");
-        return;
+
     }
 
     // reset subheader text
@@ -234,13 +238,11 @@ function userChoice(clickedCard) {
     // add .showCard class to div 
     $(this).addClass("showCard");
 
-
     // counts shown cards
     numShown = $(".showCard").length;
-    console.log("numShown");
-    console.log(numShown);
 
-    if (numShown >= 2) { //when 2 are shown
+    // check if 2 cards are revealed
+    if (numShown >= 2) { // 2 are shown
 
         // increase guesses and update element
         guesses++;
@@ -248,8 +250,6 @@ function userChoice(clickedCard) {
 
         //array of the img elements that are descendants of elems w/ .showCard class
         twoCards = $(".showCard").find(".cardFace").find("img");
-        console.log("twoCards");
-        console.log(twoCards);
 
         // compare the cards
         isMatch = compareCards(twoCards);
@@ -283,31 +283,12 @@ function userChoice(clickedCard) {
 
             //lock the cards in shown state
             $(".showCard").addClass("lockCard");
-            console.log("added .lockCard")
 
             //remove .showCard class
             $(".showCard").removeClass("showCard");
-            console.log("removed .showCard")
 
-            // Check if unshown tiles remain
-            if ($(".cardToFlip").length == $(".lockCard").length) { //if all cards are locked
-
-                // Soli added these into functions for readability
-
-                /*                     // show best record
-                if (Math.floor(guesses/2) < bestScore) {
-                    bestScore = Math.floor(guesses/2);
-                }
-                $("#bestScore").html(bestScore);
-
-                // show result
-                $("#result").html("You won after " + Math.floor(guesses/2) + " guesses!");
-                //show newgame button
-                $("#newGameBtn").css('visibility', 'visible');
-            } else {
-                // NEXT ROUND */
-
-
+            // Check if unshown tiles remain -- if so, game continues
+            if ($(".cardToFlip").length == $(".lockCard").length) { //if all cards are locked -- game over
 
                 // cancel timer so that the text doesn't change
                 clearTimeout(timer);
@@ -321,20 +302,19 @@ function userChoice(clickedCard) {
 
     }//END: check 2 shown
 
-}
+}//END: fn clickedCard
 
+/**
+ * Standardized way to print string to the subheader text.
+ * @param {string} str String to be outputted.
+ */
 function output(str) {
     $("#subHeaderContent").html(str);
 }
 
-
-//////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-
-// Dashboard stuff (switch to jquery?)
-
-
+/**
+ * Sets up the elements that contain the game's instructions for user.
+ */
 function createDashboard() {
     let dashboard = document.getElementById("dashboard");
 
@@ -343,9 +323,11 @@ function createDashboard() {
     result.setAttribute("id", "result");
     dashboard.appendChild(result);
 
-    // instruction
+    // create & modify instructions' parent element
     let instruction = document.createElement("div");
     instruction.setAttribute("id", "instruction");
+
+    // instructions child elements
     instruction.innerHTML = "<h3 style='text-align: center;'>Instructions</h3>" +
         "<ul>" +
         "<li>On each turn, you can flip over two cards to reveal their front pictures. </li>" +
@@ -355,29 +337,44 @@ function createDashboard() {
         "<li>Your score is the number of tries it takes to find every pair ... so aim for a lower number!</li>" +
         "<li>See if you can beat your best score! Good Luck!!</li>" +
         "</ul>";
+
+    // add instructions to parent element
     dashboard.appendChild(instruction);
 
-    // // button
-    // let rtButton=document.createElement("button");
-    // rtButton.setAttribute("id", "rtButton");
-    // rtButton.setAttribute("onclick", newGameSetup);
-    // rtButton.style.display="none";
-    // dashboard.appendChild(rtButton);
-}
+}//END: createDashboard()
 
-// /**
-//  *
-//  * @param {boolean} isSame : a flag indicating the two tiles selected have the same image
-//  * @param {boolean} isGameOver : a flag indicating the game is over
-//  */
-// function setResult(isSame, isGameOver){
-//     //get result
-//     let result=document.getElementById("result");
+/**
+ * Creates each card's unique element tree. 
+ * THIS IS SCALABLE. If in the future, a form input is provided, the user could
+ *  specify # of pairs (difficulty) and this loop would iterate accorind to that input.
+ */
+function createMCItem() {
 
-//     // indicate the player failed
-//     if (!isSame) {
-//         result.innerHTML = "You failed!";
-//     } else if (isGameOver) {
-//         result.innerHTML = "You completed the puzzle in " + moves + " steps!";
-//     }
-// }
+    // get the middle column containing element
+    let colMid = document.getElementById("tile-container");
+
+    // create desired number of cards, and all elements required for each.
+    for (i = 0; i < 12; i++) {
+
+        let midColItem = document.createElement("div");
+        midColItem.setAttribute("class", "middle-column-item");
+        midColItem.innerHTML = "<article class=\"cardHolder\">" +
+            "<div class=\"cardToFlip\">" +
+            "<div class=\"cardToFlip-inner\">" +
+            "<div class=\"cardBack\">" +
+            "<img class=\"cardImg\" src=\"https://picsum.photos/240/320?random=1\" alt=\"card back image\">" +
+            "</div>" +
+            "<div class=\"cardFace\">" +
+            "<img class=\"cardImg\" id=\"face" + i + "\" src=\"https://picsum.photos/240/320?random=8\" alt=\"card face image\">" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</article>";
+        // picsum photo url is hardcoded, so that the card back stays the same every new game (but changes upon reload)
+
+        //add card to middle column
+        colMid.appendChild(midColItem);
+
+    }//END: for loop - each card
+
+}//END: fn createMCItem()

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Memory Game: Team Beta</title>
+  <meta name="description" content="A fun matching game with pretty images.">
+  <meta name="author" content="Group Beta: Soliloquy, Xuerun, Fawzi">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=PT+Serif&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=PT+Serif&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="styles/main.css">
-  <link rel="stylesheet" type="text/css" href="styles/cards.css">
-
-
-
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
   <div class="header">
-     <h1>Memory Game</h1>
-     <!--<span> - Team Beta - </span> -->
+    <h1>Memory Game</h1>
   </div>
 
   <div class="subHeader">
@@ -32,187 +32,11 @@
   <div class="container">
     <div class="column left">
       <div id="dashboard">
-        
+
       </div>
     </div>
 
-    <div class="column middle">
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face0" src="https://picsum.photos/240/320?random=2" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face1" src="https://picsum.photos/240/320?random=4" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face2" src="https://picsum.photos/240/320?random=6" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face3" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face4" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face5" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face6" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face7" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face8" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face9" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face10" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      <div class="middle-column-item">
-        <article class="cardHolder">
-          <div class="cardToFlip">
-            <div class="cardToFlip-inner">
-              <div class="cardBack">
-                <img class="cardImg" src="https://picsum.photos/240/320?random=1" alt="card back image">
-              </div>
-              <div class="cardFace">
-                <img class="cardImg" id="face11" src="https://picsum.photos/240/320?random=8" alt="card face image">
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-    </div>
+    <div class="column middle" id="tile-container"></div>
 
 
     <div class="column right">
